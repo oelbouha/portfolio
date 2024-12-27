@@ -2,22 +2,27 @@
 
 @font-face {
 	font-family: montserrat;
-	src: url('./fonts/montserrat/Montserrat-Black.ttf');
+	src: url('./fonts/Futura\ Bold/Futura Bold.ttf');
 	font-family: montserrat-extraBold;
-	src: url('./fonts/montserrat/Montserrat-ExtraBold.ttf');
+	src: url('./fonts/Futura\ Bold/Futura Bold.ttf');
+	font-family: GT-america-bold;
+	src: url('./fonts/GT-America/GT-America-Compressed-Bold-Trial.otf');
+	font-family: GT-america-black;
+	src: url('./fonts/GT-America/GT-America-Standard-Bold-Trial.otf');
 }
 
 
 .logo {
-	color: #000;
+	color: #ffffff;
 	position: absolute;
-	bottom: 4%;
-	left:   4%;
+	bottom: 3%;
+	left:   3%;
 	cursor: pointer;
-	font-family: montserrat-extraBold;
-	font-size: 4rem;
+	font-family:  GT-america-black;
+	font-size: 2.5rem;
 	display: flex;
 	flex-direction: column;
+	z-index: 5;
 }
 .logo-first-word {
 	margin-bottom: -25px;
@@ -58,7 +63,11 @@
 }
 
 .typo {
+	color: #ffffff;
+	z-index: 2;
 	position: absolute;
-	bottom: 4%;
+	bottom: 2.5%;
 	right:  3%;
+	font-family:  GT-america-black;
+	font-size: 0.7rem;;
 }

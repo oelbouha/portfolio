@@ -7,7 +7,7 @@ import ThreeDTextList from './components/3dText'
 function App() {
   return (
     <div className="home-page">
-      {/* <Logo/> */}
+      <Logo/>
       {/* <Menu/> */}
         <div className='projects-list'>
           <ThreeDTextList/>

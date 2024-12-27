@@ -23,33 +23,45 @@ const ThreeDTextList = () => {
     // Animate each character with staggered effect
     gsap.fromTo(
       text,
-      { opacity: 0, y: -window.innerHeight, scale: 1}, // Start state
+      { opacity: 0, y: -window.innerHeight * 2.2, delay: 0.1}, // Start state
       {
         opacity: 1,
         y: 0,
-        duration: 0.9,
+        duration: 1.5,
         stagger: {
           amount: 0.1,
           from: "end"
         }, 
         ease: "power1.inOut",
-        scale: 1
       }
     )
     gsap.fromTo(
       text,
-      { rotationY: -100 },
+      { scaleX: 0.5}, // Start state
       {
-        rotationY: -45,
-        duration: 0.9,
-        ease: "power1.inOut",
+        duration: 2,
         stagger: {
-          amount: 0.5,
+          amount: 0,
           from: "end"
-        },
-        delay: 0.2
+        }, 
+        ease: "power1.inOut",
+        scaleX: 1,
       }
-    );
+    )
+    // gsap.fromTo(
+    //   text,
+    //   { rotationY: -90},
+    //   {
+    //     rotationY: -45,
+    //     duration: 1.5,
+    //     ease: "power1.inOut",
+    //     stagger: {
+    //       amount: 0.5,
+    //       from: "end"
+    //     },
+    //     delay: 0.1
+    //   }
+    // );
    
   }, [])
 
@@ -70,7 +82,7 @@ const ThreeDTextList = () => {
                 >
                   <div className='project-container'>
                     <a href='#' >
-                      MINI-<br /> SHELL
+                      MINI-SHE-<br /> SHELL
                     </a>
                 </div>
               </li>
