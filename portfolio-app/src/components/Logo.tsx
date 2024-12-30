@@ -10,7 +10,10 @@ function Logo() {
 	return (
 		<>
 			<div className="logo">
-				<div className='logo-first-word'>ModeDev.</div>
+				<div className='logo-first-word'>
+					dev.
+					
+					</div>
 				{/* <div className='logo-second-word'> */}
 					{/* <div>DevSoul</div> */}
 					{/* <div className='switch-color'> */}
