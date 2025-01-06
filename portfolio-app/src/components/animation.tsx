@@ -7,82 +7,52 @@ import gsap from 'gsap';
 interface AnimationProps {
 	color: string,
 	up: boolean,
+	onAnimationComplete: () => void
 }
 
+function Animation({ color, up, onAnimationComplete }: AnimationProps) {
+	const recRef = useRef<HTMLDivElement>(null);
+	const [isAnimating, setIsAnimating] = useState(false);
+	const [visible, setVisible] = useState(false); // Controls visibility
 
-function Animation({ color, up } : AnimationProps) {
-	const recRef = useRef(null)
-	const [rows, setRows] = useState([])
-
-	useEffect( () => {
-		
-		const calculateRows = () => {
-			const rowWidth = 150;
-			const numbersOfRows = Math.floor(window.innerWidth / rowWidth);
-			setRows(Array(numbersOfRows).fill(null))
-		}
-
-		calculateRows();
-	}, [])
-	
+  
 	useEffect(() => {
-		
-		console.log("animation ... ", up)
-		const text = recRef.current?.children;
-
-		if (up) {
-			gsap.fromTo(
-				text,
-				{  y: -window.innerHeight * 2, delay: 0.1}, 
-				{
-					y: 0,
-					duration: 2.5,
-					stagger: {
-						amount: 0.5,
-						from: "end"
-					}, 
-					ease: "power2.inOut",
-					onComplete: () => {
-						console.log("animation completed ...")
-					}
-				}
-			)
-			return 
-		}
-		gsap.fromTo(
+	  if (!recRef.current || isAnimating) return;
+	  setIsAnimating(true);
+	  setVisible(true); // Ensure the div is visible before starting the animation
+	  const text = recRef.current?.children;
+  
+	  gsap.fromTo(
 		text,
-		{  y: 0, delay: 0.1}, 
+		{scaleX: 0, delay: 0.2},
 		{
-			y: -window.innerHeight * 2,
-			duration: 2.5,
-			stagger: {
-			amount: 0.5,
-			from: "end"
-			}, 
-			ease: "sine.inOut",
-			// delay: 2
+			scaleX: 1,
+			ease: 'power3.inOut',
+			duration: 1,
+			onComplete: () => {
+				setIsAnimating(false);
+				if (!up) setVisible(false);
+				onAnimationComplete()
+			}
 		}
-		)
-	}, [up])
-
+	  );
+	}, [up]);
+  
 	return (
-		<>
-			<div className="intro-animation flex flex-row w-screen h-screen flex-grow" ref={recRef}>
-				{rows.map((_, index) => 
-					<div
-					key={index} 
-					className='animation-row'
-					style={
-						{
-							backgroundColor: color
-						}
-					}
-					>
-					</div>
-				)}
-			</div>
-		</>
-	)
-}
-
+	  <div
+		style={{
+		  display: visible ? 'flex' : 'none', // Ensure visibility until animation completes
+		}}
+		className="background-container flex-row"
+		ref={recRef}
+		>
+			<div className='background-col flex-1' style={{backgroundColor: up ? "#000" : "#fff"}}></div>
+			<div className='background-col flex-1' style={{backgroundColor: up ? "#000" : "#fff"}}></div>
+			<div className='background-col flex-1' style={{backgroundColor: up ? "#000" : "#fff"}}></div>
+			<div className='background-col flex-1' style={{backgroundColor: up ? "#000" : "#fff"}}></div>
+			<div className='background-col flex-1' style={{backgroundColor: up ? "#000" : "#fff"}}></div>
+	  	</div>
+	);
+  }
+  
 export default Animation 

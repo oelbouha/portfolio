@@ -1,19 +1,16 @@
 import { useState } from 'react'
 import '../App.css'
-import Animation from '../components/animation'
+import GrowAnimation from '../components/animation'
+import MenuIcon from '../components/menuIcon'
 
+interface props {
+	onToggleAnimation: boolean
+}
 
-function Menu( {onToggleAnimation} ) {
-	const [clicked, setClicked] = useState(false)
+function Menu( ) {
 
-	const handleClicked = () => {
-		const newState = !clicked
-		setClicked(newState)
-		onToggleAnimation?.(newState)
-	}
 	return (
-		<div className="menu-icon flex flex-row" onClick={handleClicked}>
-			{clicked ? 'close' : "menu"}
+		<div className="menu-page flex flex-row bg-black w-screen h-screen" >
 		</div>
 	)
 }
