@@ -1,8 +1,8 @@
 
 import '../App.css'
-import { useState } from 'react'
-import AnimatedRectangle from './AnimatedRectangle'
-
+import gsap from 'gsap';
+import { useEffect, useRef, useState } from 'react'
+import AnimatedRectangle from './AnimatedRectangle';
 
 
 const footerBackgroundCOlor = "white"
@@ -10,16 +10,37 @@ const footerBackgroundCOlor = "white"
 interface FooterProps {
 	color: string,
 }
+
 function Footer({color}: FooterProps) {
+	const [isAnimated, setIsAnimated] = useState(true)
+	const logoText = useRef(null)
+
+	const animateLogo = () => {
+		const menu = logoText.current
+		gsap.fromTo(
+			menu,
+			{y: 100, opacity: 0.5, },
+			{
+				y: 0,
+				duration: 1,
+				onComplete: () => {
+					setIsAnimated(false)
+				},
+				delay: 4,
+				ease: "expo.inOut"
+			}
+		)
+	}
+	useEffect( () =>{
+		if (isAnimated) animateLogo()
+	}, [isAnimated])
+
 	return (
 		<div className={`footer-container  bg-${footerBackgroundCOlor} overflow-hidden flex p-8 justify-between`}>
 			<div className="logo-container">
-				<div className='logo-style' style={{color: color}}>
+				<div className='logo-style' style={{color: color}} ref={logoText}>
 					<p>SOFTWARE<br />DEVELOPER.</p>
 				</div>
-				{/* <div className='' style={{color: color}} >
-					
-				</div> */}
 			</div>
 			<div className='social-media-container flex flex-row gap-8 self-end'>
 				<div className='social-media-link flex gap-3'>

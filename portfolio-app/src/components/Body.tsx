@@ -1,7 +1,7 @@
 
 import '../App.css'
 
-const backgroundColor = "#dfdff2"
+const backgroundColor = "#7f0a2b"
 const borderColor = "black"
 
 interface BodyProps {

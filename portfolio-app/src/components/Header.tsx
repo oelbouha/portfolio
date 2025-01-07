@@ -2,27 +2,40 @@
 import MenuIcon  from "./menuIcon"
 import Menu from "./menu"
 import '../Header.css'
-import { useState } from "react"
+import { useRef, useState } from 'react'
 
-interface HeaderProps {
+type HeaderProps = {
 	color: string
 }
 
 const headerBackgroundCOlor = "white"
 
 function Header ({color}: HeaderProps) {
-	const [isOpen, setIsOpen] = useState(false)
+	const [isMenuOpen, setIsMenuOpen] = useState(false)
+	const [isMenuClose, setIsMenuClose] = useState(false)
+	const [isAnimating, setIsAnimating] = useState(false)
+	const [isColorChanged, setIsColorChanged] = useState(false)
+	const [animateIcon, setAnimateIcon] = useState(false)
+
+
 
 	const handleClicked = () => {
-		console.log("menu cliiiiii")
-		setIsOpen(true)
+		if (isMenuOpen) {
+			setIsMenuOpen(false)
+			setIsMenuClose(true)
+		}
+		else {
+			setIsMenuOpen(true)
+			setIsMenuClose(false)
+		}
+		setAnimateIcon(true)
+		setIsColorChanged(true)
 	}
+
 	return (
 		<div className={`header-container bg-${headerBackgroundCOlor} overflow-hidden flex w-screen p-8`}>
-			<MenuIcon color="black" onClick={handleClicked} />
-			{
-				isOpen && <Menu />
-			}
+			<MenuIcon color="black" onClick={handleClicked} animate={animateIcon} changeColor={isColorChanged}/>
+			<Menu openMenu={isMenuOpen} closeMenu={isMenuClose} />
 		</div>
 	)
 }

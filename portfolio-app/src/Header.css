@@ -1,5 +1,21 @@
 
 
+
+.intro-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #7f0a2b;
+	align-items: center;
+}
+
+.loading-container {
+	width: 7vw;
+	height: 7vw;
+	background-color: black;
+	border-radius: 50%;
+}
+
 .header-container {
 	position: absolute;
 	left:   0;
