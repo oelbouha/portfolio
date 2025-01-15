@@ -1,5 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/druk-wide-bold');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,6 +21,8 @@
 @font-face {
 	font-family: montserrat;
 	src: url('./fonts/Futura\ Bold/Futura Bold.ttf');
+	font-family: delirium;
+	src: url('./fonts/fty-delirium-ncv-font/DeliriumNcv-Vm5e.ttf');
 	font-family: montserrat-extraBold;
 	src: url('./fonts/Futura\ Bold/Futura Bold.ttf');
 	font-family: GT-america-bold;
@@ -30,20 +33,15 @@
 	src: url('./fonts/DrukWide-Heavy-Trial.otf');
 	font-family: Druk wide super;
 	src: url('./fonts/DrukText-Super-Trial.otf');
-	font-family: FounderGrotesk;
-	src: url('./fonts/Founders_Grotesk/FoundersGroteskXCond-Bold.otf');
-}
-
-body {
-	/* background-color: #4801ff; */
-	/* background-color: #7f0a2b; */
+	font-family: tallica;
+	src: url('./fonts/heading_now/HeadingNowTrial-05Medium.ttf');
 }
 
 
 .home-page {
-	background-color:  #000;
-	width:  100vw;
-	height: 100vh;
+	background-color:  #f4f3e3;
+	width:  100dvw;
+	height: 100dvh;
 }
 
 
@@ -64,35 +62,29 @@ body {
 }
 
 .projects {
+	position: absolute;
+	top: 0;
+	right: 0;
 	/* margin-top: 1.9rem; */
 	padding-right: 5rem;
+	padding-top: 2rem;
 	width: 100%;
-	perspective: 1000px;
-	/* background-color: rgb(34, 16, 16); */
-	overflow-y: auto;
+	/* perspective: 1000px; */
+	background-color: #f4f3e3;
+	/* overflow-y: auto; */
 }
 
-.projects {
-	/* border: 10px solid #f8cb74; */
-	position: relative;
-	margin: 0rem;
-	padding-left: 0;
-	padding-top: 10rem;
-	list-style: none;
-	width: 100%;
-	/* transform-style: preserve-3d; */
-}
 
 .project-name {
 	color: #000;
-	font-size: 9vw;
+	font-size: 7vw;
 	transform-origin: right center;
 	/* transform-style: preserve-3d; */
 	/* transform: rotateY(-45deg); */
-	/* -webkit-text-stroke: 3px #000; */
-	line-height: 0.7em;
-	/* font-family: "Bebas Neue", serif; */
-	font-family: FounderGrotesk;
+	/* -webkit-text-stroke: 2px #000; */
+	line-height: 1em;
+	font-family: Anton,Arial,sans-serif;
+	text-align: right;
 }
 
 .hover-style {

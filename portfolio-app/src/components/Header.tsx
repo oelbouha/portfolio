@@ -2,15 +2,17 @@
 import MenuIcon  from "./menuIcon"
 import Menu from "./menu"
 import '../Header.css'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type HeaderProps = {
-	color: string
+	color: string,
+	startHeaderAnimation: boolean,
+	headerAnimationComplete: () => void
 }
 
 const headerBackgroundCOlor = "white"
 
-function Header ({color}: HeaderProps) {
+function Header ({color, startHeaderAnimation, headerAnimationComplete}: HeaderProps) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [isMenuClose, setIsMenuClose] = useState(false)
 	const [isAnimating, setIsAnimating] = useState(false)
@@ -18,7 +20,14 @@ function Header ({color}: HeaderProps) {
 	const [animateIcon, setAnimateIcon] = useState(false)
 
 
-
+	const handleCompleteAnimation = () => {
+		headerAnimationComplete()
+	}
+	const menuAnimationComplete = () => {
+		console.log("seting false")
+		setAnimateIcon(false)
+	}
+	
 	const handleClicked = () => {
 		if (isMenuOpen) {
 			setIsMenuOpen(false)
@@ -28,13 +37,18 @@ function Header ({color}: HeaderProps) {
 			setIsMenuOpen(true)
 			setIsMenuClose(false)
 		}
+		if (isMenuOpen)
+			setIsColorChanged(false)
+		else setIsColorChanged(true)
 		setAnimateIcon(true)
-		setIsColorChanged(true)
 	}
 
 	return (
-		<div className={`header-container bg-${headerBackgroundCOlor} overflow-hidden flex w-screen p-8`}>
-			<MenuIcon color="black" onClick={handleClicked} animate={animateIcon} changeColor={isColorChanged}/>
+		<div className={`header-container  overflow-hidden flex w-screen p-8`}>
+			<MenuIcon color="white" onClick={handleClicked} animate={animateIcon} changeColor={isColorChanged} 
+				animationComplete={handleCompleteAnimation} 
+				startMenuAnimation={startHeaderAnimation} 
+				menuAnimationComplete={menuAnimationComplete}/>
 			<Menu openMenu={isMenuOpen} closeMenu={isMenuClose} />
 		</div>
 	)

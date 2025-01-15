@@ -8,11 +8,14 @@ interface props {
 }
 
 function Menu( {openMenu, closeMenu} : props ) {
-	const [isAnimating, setIsAnimating] = useState(false)
+	const [isAnimating, setIsAnimating] = useState<boolean>(false)
+
 	const menuWindow = useRef(null)
 
 	useEffect(() => {
-		if (openMenu) openMenuWindow()
+		if (openMenu){
+			openMenuWindow()
+		}
 		if (closeMenu) closeMenuWindow()
 
 	}, [openMenu, closeMenu])
@@ -24,10 +27,12 @@ function Menu( {openMenu, closeMenu} : props ) {
 
 		gsap.fromTo(
 			menu,
-		  {  scale: 0,},
+		  {  width: 0, height: 0, borderRadius: "0",},
 		  {
-			duration: 1.5,
-			scale: 380,
+			width: "45dvw",
+			height: "99.5dvh",
+			borderRadius: "2.5rem",
+			duration: 1.6,
 			ease: "power3.inOut",
 			onComplete: () => {
 				setIsAnimating(false)
@@ -36,15 +41,21 @@ function Menu( {openMenu, closeMenu} : props ) {
 		)
 	}
 	const closeMenuWindow = () => {
-		// if (isAnimating) return
+		if (isAnimating) return
 		const menu = menuWindow.current
 
 		gsap.fromTo(
 			menu,
-		  {  scale: 380,},
 		  {
-			duration: 2,
-			scale: 1,
+		  	height: "99.5dvh",
+			width: "45dvw", 
+			borderRadius: "2.5rem",
+			},
+		  {
+			  width: 0,
+			  height: 0,
+			  borderRadius: "0",
+			  duration: 1.6,
 			ease: "power3.inOut",
 			onComplete: () => {
 				setIsAnimating(false)
@@ -52,7 +63,6 @@ function Menu( {openMenu, closeMenu} : props ) {
 		  }
 		)
 	}
-
 
 	return (
 		<div className={`menu-page ${openMenu ? "activate": ""} `}

@@ -2,136 +2,112 @@ import { useEffect, useRef, useState } from 'react'
 import '../MenuIcon.css'
 import gsap from 'gsap';
 
-
-const dark = "dark"
+const dark = "#ec2031"
 const white = "white"
 
 interface IconProps {
-	color: string,
-	changeColor: boolean,
-	animate: boolean,
-	onClick: () => void,
+  color: string,
+  changeColor: boolean,
+  animate: boolean,
+  startMenuAnimation: boolean,
+  onClick: () => void,
+  animationComplete: () => void,
+  menuAnimationComplete: () => void,
 }
 
-function MenuIcon( {color, changeColor, animate, onClick}: IconProps ) {
-	let iconColor = dark
-	const [isHovered, setIsHovered] = useState(false)
-	const [isRendered, setIsRendered] = useState(true)
-	const [isAnimating, setIsAnimating] = useState(false)
-	const menuWindow = useRef(null)
-	const menuDiv = useRef(null)
+function MenuIcon({ color, changeColor, animate, onClick, animationComplete, startMenuAnimation , menuAnimationComplete}: IconProps) {
+  const [switchColor, setSwitchColor] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isRendered, setIsRendered] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false)
+  
+  const menuWindow = useRef(null)
+  const menuDiv = useRef(null)
+  const menuIcon = useRef(null)
+  
+  const animateMenuIn = () => {
+    // if (isAnimating) return
+    // setIsAnimating(true)
+    
+    const menu = menuIcon.current
+    gsap.to( menu, {
+        y: 0, duration: 0.7, ease: "power3.inOut",
+        onComplete: () => {
+          // setIsAnimating(false)
+          menuAnimationComplete()
+        }
+      }
+    )
+  }
+  const animateMenuOut = () => {
+    console.log("animating ... out")
+    // if (isAnimating) return
+    // setIsAnimating(true)
+    
+    console.log("animate menu out")
+    const menu = menuIcon.current
+    gsap.to(menu, {
+        y: -200, duration: 0.7, ease: "power3.inOut",
+        onComplete: () => {
+          // setIsAnimating(false)
+          setTimeout(() => { animateMenuIn() }, 900)
+        }
+      }
+    )
+  }
 
-	const animateMenuOut = () => {
-		// if (isAnimating) return
-		setIsAnimating(true)
-		const menu = menuDiv.current
-
-		gsap.fromTo(
-			menu,
-		  { y: 0},
-		  {
-			y: -100,
-			duration: 1,
-			ease: "power3.inOut",
-			onComplete: () => {
-				setIsAnimating(false)
-				animateMenuIn()
+  const moveMenuIconTop = () => {
+    if (isAnimating) return
+    setIsAnimating(true)
+    
+    const menu = menuIcon.current
+    gsap.fromTo(
+			menu, 
+			{
+        top: "50%", left: "50%", transform: "translate(-50% , -50%)",},
+			{
+        position: "fixed", top: "4%", left: "3%", duration: 1.2, ease: "back.in",
+				onComplete: () => {
+          // setIsAnimating(false)
+				}
 			}
-		  }
 		)
-	}
-	const animateMenuIn = () => {
-		// if (isAnimating) return
-		setIsAnimating(true)
-		const menu = menuDiv.current
+  }
 
-		gsap.fromTo(
-			menu,
-		  { y: -100},
-		  {
-			y: 0,
-			duration: 1,
-			ease: "power3.inOut",
-			onComplete: () => {
-				setIsAnimating(false)
-			}
-		  }
-		)
-	}
-	const shrinkCircle = () => {
-		if (isAnimating) return
-		setIsAnimating(true)
-		const menu = menuWindow.current
+  const handleIsHovered = () => {
+    console.log("hovered :: ", isHovered)
+    if (!isHovered) setIsHovered(true)
+  }
 
-		gsap.fromTo(
-			menu,
-		  {  scale: 280, opacity: 0.8},
-		  {
-			duration: 4,
-			scale: 1,
-			opacity: 1,
-			ease: "power3.inOut",
-			onComplete: () => {
-				setIsRendered(false)
-				setIsAnimating(false)
-			}
-		  }
-		)
-	}
-	const expandCircle = () => {
-		if (isAnimating) return
-		setIsAnimating(true)
-		const menu = menuWindow.current
+	useEffect(() => {
+    startMenuAnimation &&  moveMenuIconTop()
+    startMenuAnimation && setIsRendered(true)
+    animate && animateMenuOut()
+  }, [startMenuAnimation, animate])
 
-		gsap.fromTo(
-			menu,
-		  {  scale: 1, opacity: 0},
-		  {
-			duration: 1,
-			opacity: 0,
-			scale: 280,
-			ease: "power3.inOut",
-			onComplete: () => {
-				shrinkCircle()
-			}
-		  }
-		)
-	}
-	
-	useEffect( () => {
-		if (isRendered) {
-			expandCircle()
-		}
-		if (animate) animateMenuOut()
-	}, [isRendered, animate])
-
-	// useEffect( () => {
-	// 	if (changeColor == false) return 
-	// 	if (iconColor == dark) iconColor = white
-	// 	else iconColor = dark
-	// 	console.log("changing color ...", iconColor)
-	// }, [changeColor])
-
-	return (
-		<div className="menu-icon" >
-			<div className='circle'
-				style={{ border: `1.5px solid ${changeColor? "white": "black"}` }}
-				onMouseEnter={ () => setIsHovered(true)}
-				onMouseLeave={ () => setIsHovered(false)}
-				onClick={ () => {onClick()}}
-				ref={menuDiv}
-			>
-				<div className={`
-						inside-circle ${isHovered ? "hovered": ""} 
-						${isRendered ? "start-animation": ""}
-					`} 	
-					style={{backgroundColor: `${changeColor? "white": "black"}`}}
-					ref={menuWindow}
-				>
-				</div>
-			</div>
-		</div>
-	)
+  return (
+    <div className={`menu-icon ${isRendered ? "top-[5%] left-[5%]" : "hidden top-[50%] left-[50%]"} `} ref={menuIcon}>
+      <div 
+        className={`circle  `}
+        onMouseEnter={handleIsHovered}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{ border: `2px solid ${switchColor ? white : dark}` }}
+        onClick={onClick}
+        ref={menuDiv}
+      >
+        <div 
+          className={`
+            transition-all duration-300 ease-out
+            ${isHovered ? "w-full h-full" : ""}
+            ${isRendered ? "w-[70%] h-[70%] rounded-full " : ""}
+          `}
+          style={{ backgroundColor: `${switchColor ? white : dark} ` }}
+          ref={menuWindow}
+        >
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default MenuIcon

@@ -10,7 +10,7 @@ import Header from './components/Header'
 import Body from './components/Body'
 import Intro from './components/Intro'
 
-const logoColor = "white"
+const logoColor = "#121212"
 
 
 function App() {
@@ -18,9 +18,10 @@ function App() {
 	const [isAnimating, setIsAnimating] = useState<boolean>(false)
 	const [isMenuClose, setIsMenuClose] = useState<boolean>(false)
 	const [isIntroAnimationDone, setIsIntroAnimationDone] = useState<boolean>(false)
+	const [startHeaderAnimation, setstartHeaderAnimation] = useState<boolean>(false)
 
-	const handleIntroAnimation = () => {
-		setIsIntroAnimationDone(true)
+	const headerAnimationComplete = () => {
+		setstartHeaderAnimation(false)
 	}
 
 	const handleMenuClicked = () => {
@@ -29,18 +30,18 @@ function App() {
 		setIsAnimating(true)
 	}
 
-	const handleCompleteAnimation = () => {
-		console.log("animation is completed ... ");
+	const introAnimationComplete = () => {
 		setIsAnimating(false)
+		setstartHeaderAnimation(true)
 	}
 
 	return (
-		<div className="home-page">
-			<Intro animationCompleted={handleCompleteAnimation}/>
-			<Header color={logoColor} />
-			<Body />
-			{/* <ThreeDTextList/> */}
-			<Footer color={logoColor} />
+		<div className="home-page flex flex-col">
+			<Intro animationCompleted={introAnimationComplete} />
+			<Header color={logoColor} startHeaderAnimation={startHeaderAnimation} headerAnimationComplete={headerAnimationComplete}/>
+			<Body startHeaderAnimation={startHeaderAnimation} /> 
+			<ThreeDTextList/>
+			<Footer color={logoColor} startHeaderAnimation={startHeaderAnimation} />
 		</div>
 	)
 }

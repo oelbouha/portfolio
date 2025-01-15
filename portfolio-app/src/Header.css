@@ -1,23 +1,86 @@
 
 
+@font-face {
+	font-family: montserrat;
+	src: url('./fonts/Futura\ Bold/Futura Bold.ttf');
+	font-family: montserrat-extraBold;
+	src: url('./fonts/Futura\ Bold/Futura Bold.ttf');
+	font-family: GT-america-bold;
+	src: url('./fonts/GT-America/GT-America-Compressed-Bold-Trial.otf');
+	font-family: GT-america-black;
+	src: url('./fonts/GT-America/GT-America-Standard-Bold-Trial.otf');
+	font-family: Druk wide heavy;
+	src: url('./fonts/DrukWide-Heavy-Trial.otf');
+	font-family: Druk wide super;
+	src: url('./fonts/DrukText-Super-Trial.otf');
+	font-family: FounderGrotesk;
+	src: url('./fonts/Founders_Grotesk/FoundersGroteskXCond-Bold.otf');
+}
 
+
+.circle-wrapper {
+	/* background-color: #1c1a1d; */
+	width:  20rem;
+	height: 20rem;
+	overflow: hidden;
+	border-radius: 50%;
+}
 .intro-container {
+	z-index: 55;
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: #7f0a2b;
+	/* background-color: #ffffff; */
 	align-items: center;
 }
 
-.loading-container {
-	width: 7vw;
-	height: 7vw;
-	background-color: black;
+.second-circle {
+	background-color: #ec2031;
+	opacity: 0.5;
+	width:  20rem;
+	height: 20rem;
 	border-radius: 50%;
+}
+.loading-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width:  20rem;
+	height: 20rem;
+	background-color: #ec2031;
+}
+
+.text-container {
+	color: #f93434;
+	font-family: FounderGrotesk;
+	font-size: 20vw;
+	width:  100%;
+	height: 100%;
+	background-color: #212121;
+}
+
+.logo-text {
+	position: fixed;
+	left: 4%;
+	bottom: 50%;
+	justify-content: center;
+	margin-left: 1rem;
+	line-height: 0.7;
 }
 
 .header-container {
 	position: absolute;
 	left:   0;
 	top: 0;
+}
+
+
+.counter {
+	font-family: FounderGrotesk;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: white;
+	align-items: center;
 }

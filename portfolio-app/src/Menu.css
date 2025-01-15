@@ -9,10 +9,8 @@
 
 .menu-page {
 	position: fixed;
-	top:  0;
-	left: 0;
-	width:  5px;
-	height: 5px;
-	background-color: black;
-	border-radius: 50%;
+	top:  0.1%;
+	left: 0.1%;
+	background-color: #121212;
+	/* border-radius: 2.5rem; */
 }

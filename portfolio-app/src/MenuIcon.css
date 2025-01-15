@@ -1,75 +1,27 @@
 
 
 .circle {
-	width:  35px;
-	height: 35px;
+	width:  3vw;
+	height: 3vw;
 	border-radius: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
-}
 
-.inside-circle {
-	width:  22px;
-	height: 22px;
-	border-radius: 50%;
-	transition: transform 0.5s ease-out;
-}
-
-.start-animation {
-	position: fixed;
-	/* transition: transform 0.5s ease-out;
-	animation: init-circle 1s ease-out; */
-}
-
-.hovered {
-	transform: scale(2);
-}
-
-.expand-circle {
-	position: fixed;
-	animation: grow-to-full-screen 1.5s ease-out forwards;
 }
 
 .menu-icon {
-	width: 50px;
 	cursor: pointer;
-	font-size: 1.5rem;
-	z-index: 5;
+	position: fixed;
+	transform: translate(-50% , -50%);
+	z-index: 999;
 }
 
-
-@keyframes init-circle {
-	from {
-		transform: scale(100);
-	}
-	to {
-		transform: scale(1);
-	}
-}
-
-@keyframes grow-to-full-screen {
-	from {
-		transform: scale(0);
-	}
-	to {
-		transform: scale(90);
-	}
-}
-
-@keyframes shrink-to-small-circle {
-	from {
-		transform: scale(100);
-	}
-	to {
-		transform: scale(0);
-	}
-}
 
 
 @media (max-width: 480px) { 
-	.header-container {
+	/* .header-container {
 		padding: 0.5rem;
 	}
 	.inside-circle {
@@ -79,6 +31,6 @@
 	.circle {
 		width:  25px;
 		height: 25px;
-	}
+	} */
 
 }

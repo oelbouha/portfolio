@@ -8,9 +8,9 @@ const ThreeDTextList = () => {
   const textRef = useRef(null)
 
   const textItems = [
-    'libft','so-long', 'printf', 'get-next<br>line','pipex','Born2be<br>root',
+    'libft','so-long', 'printf', 'get-nextline','pipex','Born2beroot',
     'MINI-SHELL', 'CUB-3D', 'PHILO',
-    'WEBSERV', 'PUSH AND <br>SWAP', 'INCEPTION', 'net<br>practice',
+    'WEBSERV', 'PUSH-SWAP', 'INCEPTION', 'net-practice',
     'PONGARENA',
     // 'PNG-ART',
   ];
@@ -33,7 +33,7 @@ const ThreeDTextList = () => {
     )
     gsap.fromTo(
       text,
-      { scaleX: 0.3}, // Start state
+      { scaleX: 0.7}, // Start state
       {
         duration: 3.7,
         stagger: {
@@ -49,7 +49,7 @@ const ThreeDTextList = () => {
       text,
       { rotationY: -60},
       {
-        rotationY: -1,
+        rotationY: -25,
         duration: 3.6,
         ease: "power3.inOut",
         stagger: {
@@ -68,9 +68,7 @@ const ThreeDTextList = () => {
   }
 
   return (
-    <div className='projects-wrapper'>
-      {/* <div className="projects-list-container">
-        <div className='flex flex-col justify-center items-end h-full w-full' >
+    <div className='projects'>
           <ul className='projects' ref={textRef}>
             {textItems.map((item, index) => (
               <li className={`project-name cursor-pointer font-bold text-right  
@@ -85,8 +83,6 @@ const ThreeDTextList = () => {
               </li>
           ))}
           </ul>
-        </div>
-      </div> */}
     </div>
   );
 };

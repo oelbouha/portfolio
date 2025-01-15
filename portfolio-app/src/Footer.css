@@ -1,4 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/druk-wide-bold');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @font-face {
 	font-family: montserrat;
@@ -11,10 +12,16 @@
 	src: url('./fonts/GT-America/GT-America-Standard-Bold-Trial.otf');
 	font-family: Druk wide super;
 	src: url('./fonts/DrukText-Super-Trial.otf');
+	font-family: delirium;
+	src: url('./fonts/fty-delirium-ncv-font/DeliriumNcv-Vm5e.ttf');
 }
 
 
+
+
+
 .footer-container {
+	/* background-color: #000; */
 	width: 100%;
 	position: absolute;
 	bottom: 0;
@@ -22,15 +29,22 @@
 }
 
 .logo-container {
-	font-family: Druk wide super;
+	padding-top: 2rem;
+	/* font-family: Druk wide super; */
 	font-size: 2rem;
 	transform-origin: bottom;
 	/* animation: grow 1s cubic-bezier(0.175, 0.885, 0.17, 0.99); */
 }
 
 .logo-style {
+	/* position: fixed;
+	bottom: 50%;
+	left: 2%; */
+	font-family: Anton, Arial, sans-serif;
+	font-weight: 900;
+	font-size: 5vw;
 	cursor: pointer;
-	line-height: 0.85;
+	line-height: 0.9;
 }
 
 .logo-style:hover {
@@ -57,8 +71,6 @@
 	justify-content: center;
 }
 
-
-
 .eye {
 	background-color: #000;
 	width:  85px;
@@ -78,8 +90,8 @@
 }
 .social-media-container {
 	/* display: none; */
-	font-family:  akzidenz-grotesk, sans-serif;
-	font-weight: 500;
+	font-family: Anton, Arial, sans-serif;
+	/* font-weight: 200; */
 	/* font-size: 0.9rem;; */
 	transform-origin: bottom;
 	animation: grow 1s cubic-bezier(0.175, 0.885, 0.17, 0.99);
