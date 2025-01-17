@@ -23,7 +23,7 @@
 .footer-container {
 	/* background-color: #000; */
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	left: 0;
 }
@@ -42,9 +42,20 @@
 	left: 2%; */
 	font-family: Anton, Arial, sans-serif;
 	font-weight: 900;
-	font-size: 5vw;
+	font-size: 3vw;
 	cursor: pointer;
 	line-height: 0.9;
+}
+
+
+.description {
+	width: 30vw;
+	font-size: 1.6rem;
+	font-family: La Fabrique Pro,Helvetica,Arial,sans-serif;
+	line-height: 1;
+	letter-spacing: 0;
+	font-weight: 400;
+
 }
 
 .logo-style:hover {

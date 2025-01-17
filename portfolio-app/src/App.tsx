@@ -40,7 +40,6 @@ function App() {
 			<Intro animationCompleted={introAnimationComplete} />
 			<Header color={logoColor} startHeaderAnimation={startHeaderAnimation} headerAnimationComplete={headerAnimationComplete}/>
 			<Body startHeaderAnimation={startHeaderAnimation} /> 
-			<ThreeDTextList/>
 			<Footer color={logoColor} startHeaderAnimation={startHeaderAnimation} />
 		</div>
 	)

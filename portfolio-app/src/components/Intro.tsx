@@ -28,6 +28,7 @@ function Intro({ animationCompleted }: props) {
 				ease: "back.inOut",
 				onComplete: () => {
 					animationCompleted()
+					setIsRendered(false)
 				}
 			}
 		)

@@ -20,6 +20,7 @@ function MenuIcon({ color, changeColor, animate, onClick, animationComplete, sta
   const [isHovered, setIsHovered] = useState(false)
   const [isRendered, setIsRendered] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [isMoved, setIsMoved] = useState(false)
   
   const menuWindow = useRef(null)
   const menuDiv = useRef(null)
@@ -69,6 +70,9 @@ function MenuIcon({ color, changeColor, animate, onClick, animationComplete, sta
         position: "fixed", top: "4%", left: "3%", duration: 1.2, ease: "back.in",
 				onComplete: () => {
           // setIsAnimating(false)
+          setTimeout(() => {
+            setIsMoved(true)
+          }, 500)
 				}
 			}
 		)
@@ -91,7 +95,9 @@ function MenuIcon({ color, changeColor, animate, onClick, animationComplete, sta
         className={`circle  `}
         onMouseEnter={handleIsHovered}
         onMouseLeave={() => setIsHovered(false)}
-        style={{ border: `2px solid ${switchColor ? white : dark}` }}
+        style={{
+          border: isMoved ? `2px solid ${switchColor ? white : dark}` : "none"
+        }}
         onClick={onClick}
         ref={menuDiv}
       >

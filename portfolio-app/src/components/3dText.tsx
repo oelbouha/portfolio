@@ -33,7 +33,7 @@ const ThreeDTextList = () => {
     )
     gsap.fromTo(
       text,
-      { scaleX: 0.7}, // Start state
+      { scaleX: 0.5}, // Start state
       {
         duration: 3.7,
         stagger: {
@@ -41,34 +41,34 @@ const ThreeDTextList = () => {
           from: "end"
         }, 
         ease: "power2.inOut",
-        scaleX: 1.2,
+        scaleX: 1,
         delay: 0.1,
       }
     )
-    gsap.fromTo(
-      text,
-      { rotationY: -60},
-      {
-        rotationY: -25,
-        duration: 3.6,
-        ease: "power3.inOut",
-        stagger: {
-          amount: 0.9,
-          from: "end"
-        },
-        delay: 0.2
-      }
-    );
+    // gsap.fromTo(
+    //   text,
+    //   { rotationY: -60},
+    //   {
+    //     rotationY: -25,
+    //     duration: 3.6,
+    //     ease: "power3.inOut",
+    //     stagger: {
+    //       amount: 0.9,
+    //       from: "end"
+    //     },
+    //     delay: 0.2
+    //   }
+    // );
    
   }, [])
 
   function handleHovered(index:number) {
-    
     setIsHovered(index)
   }
 
   return (
-    <div className='projects'>
+    <div className='projects-wrapper flex p-3'>
+          <h4 className='work-header' >recent work</h4>
           <ul className='projects' ref={textRef}>
             {textItems.map((item, index) => (
               <li className={`project-name cursor-pointer font-bold text-right  
@@ -78,8 +78,13 @@ const ThreeDTextList = () => {
                   key={index}
                 >
                 <div className='project-container'>
-                    <a href='#'  dangerouslySetInnerHTML={{ __html: item.toUpperCase() }} />
+                    <div className='flex gap-8'>
+                      <a href='#'  dangerouslySetInnerHTML={{ __html: item.toUpperCase() }} />
+                      {/* <div className='work-line'></div> */}
+                      <div className='work-year'> 2020</div>
+                    </div>
                 </div>
+                    
               </li>
           ))}
           </ul>

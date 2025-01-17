@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import '../App.css'
 import '../Body.css'
+import ThreeDTextList from './3dText'
 import gsap  from 'gsap'
+import { flattenJSON } from 'three/src/animation/AnimationUtils'
 
 const backgroundColor = "#7f0a2b"
 const borderColor = "black"
@@ -10,6 +12,8 @@ interface BodyProps {
 	startHeaderAnimation: boolean
 }
 function Body({startHeaderAnimation} : BodyProps) {
+  const [startProjectsAnimation, setStartProjectsAnimation] = useState<boolean>(false)
+
 	const containerRef = useRef(null)
   const textRef = useRef(null)
   
@@ -24,8 +28,7 @@ function Body({startHeaderAnimation} : BodyProps) {
 		  transformOrigin: "center left",
 		  duration: 1.3,
 		  ease: "power3.inOut",
-		  onComplete: () => {
-		  }
+		  onComplete: () => { setStartProjectsAnimation(true) }
 		}
 	  )
   }
@@ -65,7 +68,7 @@ function Body({startHeaderAnimation} : BodyProps) {
         duration: 2.5,
         ease: "power3.inOut",
         onComplete: () => {
-			animateText()
+			  animateText()
         }
       }
     )
@@ -73,24 +76,27 @@ function Body({startHeaderAnimation} : BodyProps) {
 
   useEffect(() => {
     if (startHeaderAnimation) {
-      animateContainer()
+      // animateContainer()
+      setStartProjectsAnimation(true)
+      
     }
   }, [startHeaderAnimation])
 
 
   return (
-    <div className="flex flex-col relative">
+    <div className="body-container flex flex-col relative">
       <div 
-        className={`rectangle-container overflow-hidden  ${startHeaderAnimation ? "" : "hidden"}`} 
+        className={`hidden rectangle-container overflow-hidden  ${startHeaderAnimation ? "" : "hidden"}`} 
         ref={containerRef}
       >
-        <div 
+        <div
           className="text-wrapper flex items-center justify-start whitespace-nowrap"
           ref={textRef}
         >
           I TURN YOUR IDEAS INTO CREATIVE IMPACT
         </div>
       </div>
+      {startProjectsAnimation && <ThreeDTextList/> }
     </div>
   )
 }
