@@ -58,9 +58,6 @@
 
 }
 
-.logo-style:hover {
-}
-
 .switch-color {
 	width: 140px;
 	height: 85px;
@@ -89,10 +86,6 @@
 	border-radius: 50%;
 }
 
-.logo-second-word {
-	display: flex;
-	flex-direction: row;
-}
 
 
 .social-media-icon {
@@ -108,9 +101,6 @@
 	animation: grow 1s cubic-bezier(0.175, 0.885, 0.17, 0.99);
 }
 
-.social-link:hover {
-	transform: scale(1.1);
-}
 
 .translate {
 	animation: grow 2s ease-in-out ;

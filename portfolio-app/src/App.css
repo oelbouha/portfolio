@@ -1,6 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/druk-wide-bold');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Grandstander:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,6 +31,8 @@
 	src: url('./fonts/heading_now/HeadingNowTrial-05Medium.ttf');
 	font-family: medafol;
 	src: url('./fonts/madfool/MadfoolRegular-lgm2V.ttf');
+	font-family: exec;
+	src: url('./fonts/Executive/executiv.ttf');
 }
 
 
@@ -41,9 +42,19 @@
 	height: 100%;
 }
 
+
+.image-wrapper {
+	position: fixed;
+	top : 10%;
+	left: 0%;
+	width: 70vw;
+	/* background-color: red; */
+	flex-grow: 1;
+}
 .work-header{
 	/* background-color: red; */
-	font-family: roboto, sans-serif;;
+	font-family: roboto, sans-serif;
+	font-weight: bold;
 }
 .projects-wrapper {
 	display: flex;
@@ -57,6 +68,8 @@
 .work-year {
 	font-size: 0.7vw;
 	font-family: roboto, sans-serif;
+	line-height: 1;
+	padding-top: 1rem;
 }
 
 .work-line {
@@ -78,13 +91,29 @@
 .project-name {
 	align-self: end;
 	color: #000;
-	font-size: 5vw;
+	font-size: 10vw;
 	/* transform-origin: right center; */
-	/* line-height:1.6em; */
-	font-family: tallica;
-	text-align: left;
+	line-height: 0.85em;
+	font-family: exec;
+	text-align: right;
 	/* padding-left: 1rem; */
+	z-index: 1000;
 }
+
+.mini-window {
+	position: absolute;
+	background-color: #faf9f1;
+	border: 1px solid #ccc;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	z-index: 1001;
+	transition: all 2s cubic-bezier(0.175, 0.885, 0.17, 0.99);
+}
+.mini-window-image {
+	width: 100%;
+	height: 100%;
+}
+
 .project-container {
 	display: inline-block;
 }
@@ -92,7 +121,7 @@
 .hover-style {
 	/* color: white;  */
 	-webkit-text-stroke: 1px #000; 
-	-webkit-text-fill-color: #f4f3e3;
+	/* -webkit-text-fill-color: #f4f3e3; */
     /* transform: rotateY(-50deg);  */
     /* transform-origin: right center; */
 }

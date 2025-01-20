@@ -57,6 +57,25 @@ function MenuIcon({ color, changeColor, animate, onClick, animationComplete, sta
     )
   }
 
+  const expandMenuIcon = () => {
+    if (isAnimating) return
+    setIsAnimating(true)
+    
+    const menu = menuDiv.current
+    gsap.fromTo(
+			menu, 
+			{
+       width:0, height: 0
+      },
+			{
+       width: 50, height: 50 , duration: 1.2, ease: "back.in",
+				onComplete: () => {
+          // setIsAnimating(false)
+
+				}
+			}
+		)
+  }
   const moveMenuIconTop = () => {
     if (isAnimating) return
     setIsAnimating(true)
@@ -90,7 +109,7 @@ function MenuIcon({ color, changeColor, animate, onClick, animationComplete, sta
   }, [startMenuAnimation, animate])
 
   return (
-    <div className={`menu-icon ${isRendered ? "top-[5%] left-[5%]" : "hidden top-[50%] left-[50%]"} `} ref={menuIcon}>
+    <div className={`menu-icon ${isRendered ? "top-[5%] left-[5%]" : " top-[50%] left-[50%]"} `} ref={menuIcon}>
       <div 
         className={`circle  `}
         onMouseEnter={handleIsHovered}

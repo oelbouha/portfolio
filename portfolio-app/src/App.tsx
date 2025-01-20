@@ -37,10 +37,11 @@ function App() {
 
 	return (
 		<div className="home-page flex flex-col">
+			
 			<Intro animationCompleted={introAnimationComplete} />
 			<Header color={logoColor} startHeaderAnimation={startHeaderAnimation} headerAnimationComplete={headerAnimationComplete}/>
 			<Body startHeaderAnimation={startHeaderAnimation} /> 
-			<Footer color={logoColor} startHeaderAnimation={startHeaderAnimation} />
+			<Footer color={"#ec2031"} startHeaderAnimation={startHeaderAnimation} />
 		</div>
 	)
 }

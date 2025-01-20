@@ -96,6 +96,7 @@ function Body({startHeaderAnimation} : BodyProps) {
           I TURN YOUR IDEAS INTO CREATIVE IMPACT
         </div>
       </div>
+     
       {startProjectsAnimation && <ThreeDTextList/> }
     </div>
   )

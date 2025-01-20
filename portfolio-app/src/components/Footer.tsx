@@ -80,7 +80,7 @@ function Footer({color, startHeaderAnimation}: FooterProps) {
 				</div>
 				<div className='social-media-link flex  font-roboto gap-10 z-30'>
 					<div className='flex justify-center items-center gap-1'>
-						<a className='social-link' style={{color: color}} href='https://github.com/oelbouha'> twitter </a>
+						<a className='social-link' style={{color: color}} href='https://github.com/oelbouha'> mail </a>
 						<svg width="11" height="11" viewBox="0 0 11 11" fill="CurrentColor" xmlns="http://www.w3.org/2000/svg">
 							<path d="M1.5 0.5V2H7.9425L0.75 9.1925L1.8075 10.25L9 3.0575V9.5H10.5V0.5H1.5Z"></path>
 						</svg>
